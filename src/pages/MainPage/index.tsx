@@ -5,7 +5,6 @@ function MainPage() {
   return (
     <>
       <Header />
-      <div>Main Page</div>
     </>
   )
 }
