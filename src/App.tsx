@@ -1,7 +1,12 @@
 import Routes from './pages/Routes';
+import Layout from './components/Layout';
 
 function App() {
-  return <Routes />;
+  return (
+    <Layout>
+      <Routes />
+    </Layout>
+  );
 }
 
 export default App;
