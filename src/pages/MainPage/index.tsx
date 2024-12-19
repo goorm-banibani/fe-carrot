@@ -1,5 +1,14 @@
+import Header from "../../components/Header";
+import ItemList from "../../components/ItemList";
+
+
 function MainPage() {
-  return <div>MainPage</div>;
+  return (
+    <>
+      <Header />
+      <ItemList />
+    </>
+  )
 }
 
 export default MainPage;
