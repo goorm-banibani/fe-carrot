@@ -478,6 +478,11 @@
   dependencies:
     "@tanstack/query-core" "5.62.8"
 
+"@tosspayments/tosspayments-sdk@^2.3.4":
+  version "2.3.4"
+  resolved "https://registry.yarnpkg.com/@tosspayments/tosspayments-sdk/-/tosspayments-sdk-2.3.4.tgz#f3d0fc3893d680ec93dba5ca80243097d29f666d"
+  integrity sha512-YypRXqS+9XtQew5TQBa21Ww8Z7QH+fOkuedfH/BaomsCqBv3qS4wMNCSYrq8pxQ7NBOOuPDw0DLvY7Bg5FWNmQ==
+
 "@types/cookie@^0.6.0":
   version "0.6.0"
   resolved "https://registry.yarnpkg.com/@types/cookie/-/cookie-0.6.0.tgz#eac397f28bf1d6ae0ae081363eca2f425bedf0d5"
