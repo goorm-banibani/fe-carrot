@@ -5,8 +5,7 @@ import LoginPage from './LoginPage';
 function Routes() {
   return (
     <ReactRouterRoutes>
-      <Route path="/" element={<LoginPage />} />
-
+      <Route path="/login" element={<LoginPage />} />
       <Route path="*" element={<Navigate replace to="/" />} />
     </ReactRouterRoutes>
   );

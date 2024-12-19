@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { FaCarrot } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 import Layout from '../../components/Layout';
 import Input from '../../components/Input';
 import Button from '../../components/Button';
@@ -28,12 +28,10 @@ const LoginPage: React.FC = () => {
                 {errorMessage}
             </div>
         )}
+        <section className='flex flex-col p-5 gap-8 sticky top-0 bg-white justify-center items-center'>
+            <img src='logo.svg' className='w-28' />
+        </section>
 
-        <div className="flex items-center justify-center space-x-2 mb-8">
-        <FaCarrot className="text-orange-500 w-8 h-8" />
-        <h1 className="text-2xl font-bold text-center text-orange-500">바니바니</h1>
-        </div>
-        
         <form
             onSubmit={(e) => {
             e.preventDefault();
@@ -59,6 +57,12 @@ const LoginPage: React.FC = () => {
             </div>
             <Button label="로그인" onClick={handleLogin} type="submit" />
         </form>
+
+        <div className="text-center mt-4">
+            <Link to="/signup" className="text-gray-500 hover:text-gray-600">
+                회원가입
+            </Link>
+        </div>
     </Layout>
   );
 };
