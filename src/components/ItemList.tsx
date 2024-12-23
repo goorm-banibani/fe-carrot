@@ -7,7 +7,6 @@ const ItemList = () => {
       {Items.map(({id, title, price, location, imageUrl}) => (
         <div key={id} className='bg-slate-100 flex p-2'>
             <img src={imageUrl} className='px-10 rounded-md' />
-
             <div className='flex flex-col p-5'>
                 <span>{title}</span>
                 <span className='text-sm text-gray-500'>{location}</span>

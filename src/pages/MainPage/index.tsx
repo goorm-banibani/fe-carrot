@@ -1,5 +1,6 @@
 import Header from "../../components/Header";
 import ItemList from "../../components/ItemList";
+import Nav from "../../components/Nav";
 
 
 function MainPage() {
@@ -7,6 +8,7 @@ function MainPage() {
     <>
       <Header />
       <ItemList />
+      <Nav />
     </>
   )
 }
