@@ -4,7 +4,6 @@ import ItemList from "../../components/ItemList";
 import Nav from "../../components/Nav";
 import Searchbar from "../../components/Searchbar";
 import { IoIosArrowBack } from "react-icons/io";
-import { IoCloseSharp } from "react-icons/io5";
 
 function MainPage() {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
