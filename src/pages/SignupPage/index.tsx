@@ -1,5 +1,6 @@
 // src/pages/SignupPage.tsx
 import React, { useState } from 'react';
+import Layout from '../../components/Layout';
 import Layout from '../../components/AuthLayout';
 import Input from '../../components/AuthInput';
 import Button from '../../components/AuthButton';

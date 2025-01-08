@@ -1,0 +1,112 @@
+[
+  {
+    "id": 1,
+    "title": "아이폰 13 미니 128GB",
+    "description": "상태 매우 좋음. 약간의 생활 기스 있음.",
+    "price": 750000,
+    "imageUrl": "https://picsum.photos/200?random=1",
+    "category": "전자제품",
+    "uploadedAt": "2024-12-01T14:30:00Z",
+    "location": "삼성동",
+    "isReserved": true
+  },
+  {
+    "id": 2,
+    "title": "삼성 갤럭시 S21",
+    "description": "1년 사용, 배터리 효율 95%.",
+    "price": 600000,
+    "imageUrl": "https://picsum.photos/200?random=2",
+    "category": "전자제품",
+    "uploadedAt": "2024-12-02T12:15:00Z",
+    "location": "역삼동",
+    "isReserved": true
+  },
+  {
+    "id": 3,
+    "title": "나이키 운동화 (사이즈 270)",
+    "description": "거의 새것. 2회 착용.",
+    "price": 50000,
+    "imageUrl": "https://picsum.photos/200?random=3",
+    "category": "패션/잡화",
+    "uploadedAt": "2024-12-03T09:00:00Z",
+    "location": "청담동",
+    "isReserved": false
+  },
+  {
+    "id": 4,
+    "title": "LG 울트라 HD TV 55인치",
+    "description": "리모컨 포함, 3년 사용.",
+    "price": 400000,
+    "imageUrl": "https://picsum.photos/200?random=4",
+    "category": "전자제품",
+    "uploadedAt": "2024-12-03T15:45:00Z",
+    "location": "압구정동",
+    "isReserved": false
+  },
+  {
+    "id": 5,
+    "title": "중고 PS5 게임 콘솔",
+    "description": "박스 없음. 추가 컨트롤러 포함.",
+    "price": 450000,
+    "imageUrl": "https://picsum.photos/200?random=5",
+    "category": "전자제품",
+    "uploadedAt": "2024-12-04T11:20:00Z",
+    "location": "청담동",
+    "isReserved": false
+  },
+  {
+    "id": 6,
+    "title": "캠핑용 의자 2개 세트",
+    "description": "가벼운 사용감, 튼튼함.",
+    "price": 30000,
+    "imageUrl": "https://picsum.photos/200?random=6",
+    "category": "스포츠/레저",
+    "uploadedAt": "2024-12-05T10:00:00Z",
+    "location": "논현동",
+    "isReserved": false
+  },
+  {
+    "id": 7,
+    "title": "에어팟 프로 2세대",
+    "description": "풀박스, 정품 확인 가능.",
+    "price": 200000,
+    "imageUrl": "https://picsum.photos/200?random=7",
+    "category": "전자제품",
+    "uploadedAt": "2024-12-06T08:30:00Z",
+    "location": "신사동",
+    "isReserved": false
+  },
+  {
+    "id": 8,
+    "title": "캐논 DSLR 카메라 EOS 800D",
+    "description": "렌즈 포함, 상태 양호.",
+    "price": 500000,
+    "imageUrl": "https://picsum.photos/200?random=8",
+    "category": "전자제품",
+    "uploadedAt": "2024-12-07T09:45:00Z",
+    "location": "압구정동",
+    "isReserved": false
+  },
+  {
+    "id": 9,
+    "title": "아기용 침대",
+    "description": "3개월 사용. 매트리스 포함.",
+    "price": 100000,
+    "imageUrl": "https://picsum.photos/200?random=9",
+    "category": "가구/인테리어",
+    "uploadedAt": "2024-12-08T13:00:00Z",
+    "location": "봉은사로",
+    "isReserved": true
+  },
+  {
+    "id": 10,
+    "title": "자전거 (알루미늄 프레임)",
+    "description": "1년 사용. 브레이크와 기어 문제 없음.",
+    "price": 150000,
+    "imageUrl": "https://picsum.photos/200?random=10",
+    "category": "스포츠/레저",
+    "uploadedAt": "2024-12-09T16:00:00Z",
+    "location": "도곡동",
+    "isReserved": false
+  }
+]
