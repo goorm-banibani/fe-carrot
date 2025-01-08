@@ -1,12 +1,16 @@
 import React, { useState } from 'react'
 import { IoSearchOutline } from "react-icons/io5";
+import { useNavigate } from 'react-router-dom';
 
 const Searchbar = () => {
   const [content, setContent] = useState('');
+  const nav = useNavigate();
 
   const submitHandler = (e) => {
     e.preventDefault();
-    console.log(content)
+    if (content.trim()) {
+      nav(`/search?q=${encodeURIComponent(content)}`);
+    }
   }
 
   return ( 
