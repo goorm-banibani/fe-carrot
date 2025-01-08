@@ -1,8 +1,9 @@
 // src/pages/SignupPage.tsx
 import React, { useState } from 'react';
-import Layout from '../../components/Layout';
-import Input from '../../components/Input';
-import Button from '../../components/Button';
+import Layout from '../../components/AuthLayout';
+import Input from '../../components/AuthInput';
+import Button from '../../components/AuthButton';
+import { signup } from '../../api/api';
 
 const SignupPage: React.FC = () => {
   const [name, setName] = useState('');
@@ -14,7 +15,7 @@ const SignupPage: React.FC = () => {
     password: '',
   });
 
-  const handleSignup = () => {
+  const handleSignup = async () => {
     const newErrors = {
       name: name ? '' : '이름을 입력해주세요.',
       id: id ? '' : '아이디를 입력해주세요.',
@@ -28,9 +29,14 @@ const SignupPage: React.FC = () => {
       return;
     }
 
-    // TODO: 회원가입 API 호출 로직 추가
-    console.log('Signup attempt:', { name, id, password });
-    alert('회원가입이 완료되었습니다!');
+    try {
+      const response = await signup(name, id, password); // API 호출
+      console.log('회원가입 성공:', response);
+      alert('회원가입이 완료되었습니다!');
+    } catch (error) {
+      console.error('회원가입 실패:', error);
+      alert('회원가입 중 문제가 발생했습니다.');
+    }
   };
 
   return (

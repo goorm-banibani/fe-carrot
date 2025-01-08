@@ -3,7 +3,6 @@ import { Link, useNavigate } from 'react-router-dom';
 import Layout from '../../components/AuthLayout';
 import Input from '../../components/AuthInput';
 import Button from '../../components/AuthButton';
-import { login } from '../../api/api';
 
 const LoginPage: React.FC = () => {
   const [id, setId] = useState('');
@@ -12,15 +11,17 @@ const LoginPage: React.FC = () => {
 
   const navigate = useNavigate();
 
-  const handleLogin = async () => {
-    try {
-      const response = await login(id, password);
-      console.log('로그인 성공:', response);
-      navigate('/'); // 메인 페이지로 이동
-    } catch (error) {
-      console.error('로그인 실패:', error);
-      setErrorMessage('아이디나 비밀번호가 잘못되었습니다.');
+  const handleLogin = () => {
+    // TODO: 로그인 처리
+    if (id !== 'correctId' || password !== 'correctPassword') {
+      // 로그인 실패 시 경고문
+      setErrorMessage('아이디나 비밀번호가 잘못 되었습니다.');
+    } else {
+      // 로그인 성공 시 메인 페이지로 이동
+      navigate('/');
+      console.log('login success');
     }
+    console.log('Login attempt:', { id, password });
   };
 
   return (
