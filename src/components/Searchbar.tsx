@@ -9,6 +9,7 @@ const Searchbar = () => {
   const submitHandler = (e) => {
     e.preventDefault();
     if (content.trim()) {
+      console.log(content)
       nav(`/search?q=${encodeURIComponent(content)}`);
     }
   }

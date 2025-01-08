@@ -1,8 +1,8 @@
-// pages/SearchPage/index.tsx
 import { useEffect, useState } from 'react';
 import { useSearchParams, useNavigate } from 'react-router-dom';
 import ItemList from '../../components/ItemList';
 import { IoIosArrowBack } from "react-icons/io";
+import Items from '../../mock/Item.json';
 
 function SearchPage() {
   const [searchParams] = useSearchParams();
@@ -11,46 +11,27 @@ function SearchPage() {
   
   const [items, setItems] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
 
-  // useEffect(() => {
-  //   const searchItems = async () => {
-  //     if (!searchTerm) return;
+  useEffect(() => {
+    // 검색어가 있을 때만 필터링 수행
+    if (!searchTerm) {
+      setItems([]);
+      return;
+    }
+
+    setIsLoading(true);
+
+    // 검색 시뮬레이션을 위한 setTimeout
+    setTimeout(() => {
+      const filteredItems = Items.filter(item => 
+        item.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        item.description.toLowerCase().includes(searchTerm.toLowerCase())
+      );
       
-  //     setIsLoading(true);
-  //     setError(null);
-      
-  //     try {
-  //       const res = await fetch(`https://04ef-222-232-44-239.ngrok-free.app/articles`, {
-  //         headers: {
-  //           'Content-Type': 'application/json',
-  //           'ngrok-skip-browser-warning': 'true',
-  //         }
-  //       });
-        
-  //       if (!res.ok) {
-  //         throw new Error('검색에 실패했습니다');
-  //       }
-        
-  //       const data = await res.json();
-  //       setItems(data);
-  //     } catch (err) {
-  //       setError(err instanceof Error ? err.message : '검색 중 오류가 발생했습니다');
-  //     } finally {
-  //       setIsLoading(false);
-  //     }
-  //   };
-
-  //   searchItems();
-  // }, [searchTerm]);
-
-  // if (error) {
-  //   return (
-  //     <div className="p-4 text-red-500">
-  //       {error}
-  //     </div>
-  //   );
-  // }
+      setItems(filteredItems);
+      setIsLoading(false);
+    }, 500); // 0.5초 지연
+  }, [searchTerm]);
 
   return (
     <div className="min-h-screen bg-white">

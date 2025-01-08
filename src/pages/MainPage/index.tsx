@@ -4,10 +4,11 @@ import ItemList from "../../components/ItemList";
 import Nav from "../../components/Nav";
 import Searchbar from "../../components/Searchbar";
 import { IoIosArrowBack } from "react-icons/io";
+import Items from '../../mock/Item.json';
 
 function MainPage() {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
-  const [items, setItems] = useState([]);
+  const [items, setItems] = useState(Items);
 
 
   useEffect(() => {
@@ -22,7 +23,8 @@ function MainPage() {
         });
 
         if(!res.ok) {
-          throw new Error('HTTP Error');
+          console.log('HTTP 에러')
+
         }
 
         const data = await res.json();
@@ -47,6 +49,7 @@ function MainPage() {
         isSearchOpen={isSearchOpen}
         setIsSearchOpen={setIsSearchOpen}
          />
+         {/* fetching failed 시 */}
       <ItemList items={items} />
       <Nav />
 
