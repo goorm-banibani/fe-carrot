@@ -1,36 +1,43 @@
-// src/pages/SignupPage.tsx
 import React, { useState } from 'react';
-import Layout from '../../components/Layout';
+import Layout from '../../components/AuthLayout';
 import Input from '../../components/AuthInput';
 import Button from '../../components/AuthButton';
+import { signup } from '../../api/api';
 
 const SignupPage: React.FC = () => {
   const [name, setName] = useState('');
-  const [id, setId] = useState('');
+  const [identifier, setIdentifier] = useState('');
   const [password, setPassword] = useState('');
   const [errors, setErrors] = useState({
     name: '',
-    id: '',
+    identifier: '',
     password: '',
   });
 
-  const handleSignup = () => {
+  const handleSignup = async () => {
+    // 입력 값 검증
     const newErrors = {
       name: name ? '' : '이름을 입력해주세요.',
-      id: id ? '' : '아이디를 입력해주세요.',
+      identifier: identifier ? '' : '아이디를 입력해주세요.',
       password: password ? '' : '비밀번호를 입력해주세요.',
     };
 
     setErrors(newErrors);
 
-    // 에러가 하나라도 있으면 회원가입 진행하지 않음
+    // 에러가 있으면 요청을 보내지 않음
     if (Object.values(newErrors).some((error) => error)) {
       return;
     }
 
-    // TODO: 회원가입 API 호출 로직 추가
-    console.log('Signup attempt:', { name, id, password });
-    alert('회원가입이 완료되었습니다!');
+    try {
+      // API 호출
+      const response = await signup(name, identifier, password); // API에 입력된 값 전달
+      console.log('회원가입 성공:', response);
+      alert('회원가입이 완료되었습니다!');
+    } catch (error: any) {
+      console.error('회원가입 실패:', error.message || error);
+      alert('회원가입 중 문제가 발생했습니다. 다시 시도해주세요.');
+    }
   };
 
   return (
@@ -47,6 +54,7 @@ const SignupPage: React.FC = () => {
         }}
         className="space-y-4"
       >
+        {/* 이름 입력 */}
         <div>
           <label htmlFor="name" className="block text-sm font-medium text-gray-700">
             이름
@@ -60,19 +68,23 @@ const SignupPage: React.FC = () => {
           {errors.name && <p className="text-red-500 text-sm mt-1">{errors.name}</p>}
         </div>
 
+        {/* 아이디 입력 */}
         <div>
-          <label htmlFor="id" className="block text-sm font-medium text-gray-700">
+          <label htmlFor="identifier" className="block text-sm font-medium text-gray-700">
             아이디
           </label>
           <Input
             type="text"
-            value={id}
-            onChange={(e) => setId(e.target.value)}
+            value={identifier}
+            onChange={(e) => setIdentifier(e.target.value)}
             placeholder="아이디를 입력하세요"
           />
-          {errors.id && <p className="text-red-500 text-sm mt-1">{errors.id}</p>}
+          {errors.identifier && (
+            <p className="text-red-500 text-sm mt-1">{errors.identifier}</p>
+          )}
         </div>
 
+        {/* 비밀번호 입력 */}
         <div>
           <label htmlFor="password" className="block text-sm font-medium text-gray-700">
             비밀번호
@@ -86,10 +98,11 @@ const SignupPage: React.FC = () => {
           {errors.password && <p className="text-red-500 text-sm mt-1">{errors.password}</p>}
         </div>
 
+        {/* 회원가입 버튼 */}
         <Button label="회원가입" onClick={handleSignup} type="submit" />
       </form>
     </Layout>
-  );
+  ); 
 };
 
 export default SignupPage;

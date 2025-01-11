@@ -1,27 +1,36 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import Layout from '../../components/Layout';
+import Layout from '../../components/AuthLayout';
 import Input from '../../components/AuthInput';
 import Button from '../../components/AuthButton';
+import { login } from '../../api/api';
 
 const LoginPage: React.FC = () => {
-  const [id, setId] = useState('');
-  const [password, setPassword] = useState('');
-  const [errorMessage, setErrorMessage] = useState('')
+  const [identifier, setIdentifier] = useState(''); // 아이디 상태
+  const [password, setPassword] = useState(''); // 비밀번호 상태
+  const [errorMessage, setErrorMessage] = useState(''); // 에러 메시지 상태
 
   const navigate = useNavigate();
 
-  const handleLogin = () => {
-    // TODO: 로그인 처리
-    if (id !== 'correctId' || password !== 'correctPassword') {
-      // 로그인 실패 시 경고문
-      setErrorMessage('아이디나 비밀번호가 잘못 되었습니다.');
-    } else {
-      // 로그인 성공 시 메인 페이지로 이동
-      navigate('/');
-      console.log('login success');
+  const handleLogin = async () => {
+    // 입력값 검증
+    if (!identifier || !password) {
+      setErrorMessage('아이디와 비밀번호를 모두 입력해주세요.');
+      return;
     }
-    console.log('Login attempt:', { id, password });
+
+    try {
+      // API 호출
+      const response = await login(identifier, password);
+      console.log('로그인 성공:', response);
+      alert('로그인에 성공했습니다!');
+      navigate('/'); // 메인 페이지로 이동
+    } catch (error: any) {
+      console.error('로그인 실패:', error.response?.data || error.message);
+      setErrorMessage(
+        error.response?.data?.message || '로그인 중 문제가 발생했습니다. 다시 시도해주세요.'
+      );
+    }
   };
 
   return (
@@ -31,7 +40,7 @@ const LoginPage: React.FC = () => {
           {errorMessage}
         </div>
       )}
-      
+
       <section className="flex flex-col p-5 gap-4 sticky top-0 bg-white justify-center items-center">
         <img src="logo.svg" className="w-28 mb-2" />
         <h1 className="text-xl font-bold text-orange-500">Login</h1>
@@ -45,20 +54,20 @@ const LoginPage: React.FC = () => {
         className="space-y-4"
       >
         <div>
-            <label htmlFor="id" className="block text-sm font-medium text-gray-700">
-                아이디
-            </label>
+          <label htmlFor="identifier" className="block text-sm font-medium text-gray-700">
+            아이디
+          </label>
           <Input
-            type="id"
-            value={id}
-            onChange={(e) => setId(e.target.value)}
+            type="text"
+            value={identifier}
+            onChange={(e) => setIdentifier(e.target.value)}
             placeholder="아이디를 입력하세요"
           />
         </div>
         <div>
-            <label htmlFor="password" className="block text-sm font-medium text-gray-700">
-                비밀번호
-            </label>
+          <label htmlFor="password" className="block text-sm font-medium text-gray-700">
+            비밀번호
+          </label>
           <Input
             type="password"
             value={password}
