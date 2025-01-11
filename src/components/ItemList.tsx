@@ -7,12 +7,11 @@ type Item = {
   title: string;
   price: number;
   location: string;
-  imageUrl?: string; // 선택적 프로퍼티
-  isReserved?: boolean; // 선택적 프로퍼티
-  description?: string; // 선택적 프로퍼티
+  imageUrl?: string;
+  isReserved?: boolean;
+  description?: string;
 };
 
-// props 타입 정의
 interface ItemListProps {
   items: Item[];
 }

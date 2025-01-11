@@ -43,7 +43,7 @@ const SignupPage: React.FC = () => {
       saveName(name);
 
       alert('회원가입이 완료되었습니다!');
-      navigate('/'); // 마이페이지로 이동
+      navigate('/'); // 로그인페이지로 이동
     } catch (error: any) {
       console.error('회원가입 실패:', error.message || error);
       alert('회원가입 중 문제가 발생했습니다. 다시 시도해주세요.');

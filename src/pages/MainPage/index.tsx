@@ -5,7 +5,7 @@ import ItemList from "../../components/ItemList";
 import Nav from "../../components/Nav";
 import Searchbar from "../../components/Searchbar";
 import Items from "../../mock/Item.json";
-import DetailPage from "../DetailPage"; // 상세 페이지 import
+import DetailPage from "../DetailPage";
 
 function MainPage() {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
@@ -13,10 +13,8 @@ function MainPage() {
 
   return (
     <div>
-      {/* 헤더 */}
       <Header isSearchOpen={isSearchOpen} setIsSearchOpen={setIsSearchOpen} />
 
-      {/* 라우팅 */}
       <Routes>
         {/* 메인 페이지 */}
         <Route
