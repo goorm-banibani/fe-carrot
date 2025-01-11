@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import Layout from '../../components/AuthLayout';
 import Input from '../../components/AuthInput';
 import Button from '../../components/AuthButton';
 import { signup } from '../../api/api';
+import { useUser } from '../../context/UserContext'; // UserContext 가져오기
 
 const SignupPage: React.FC = () => {
   const [name, setName] = useState('');
@@ -13,6 +15,9 @@ const SignupPage: React.FC = () => {
     identifier: '',
     password: '',
   });
+
+  const { setName: saveName } = useUser(); // UserContext의 setName 사용
+  const navigate = useNavigate(); // useNavigate를 사용하여 navigate 변수 선언
 
   const handleSignup = async () => {
     // 입력 값 검증
@@ -33,7 +38,12 @@ const SignupPage: React.FC = () => {
       // API 호출
       const response = await signup(name, identifier, password); // API에 입력된 값 전달
       console.log('회원가입 성공:', response);
+
+      // 이름을 Context에 저장
+      saveName(name);
+
       alert('회원가입이 완료되었습니다!');
+      navigate('/'); // 마이페이지로 이동
     } catch (error: any) {
       console.error('회원가입 실패:', error.message || error);
       alert('회원가입 중 문제가 발생했습니다. 다시 시도해주세요.');
@@ -102,7 +112,7 @@ const SignupPage: React.FC = () => {
         <Button label="회원가입" onClick={handleSignup} type="submit" />
       </form>
     </Layout>
-  ); 
+  );
 };
 
 export default SignupPage;

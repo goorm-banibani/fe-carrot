@@ -28,3 +28,15 @@ export const login = async (identifier: string, password: string) => {
   const response = await apiClient.post('/user/login', { identifier, password });
   return response.data;
 };
+
+export const getUserInfo = async (identifier: string) => {
+  try {
+    const response = await apiClient.post('/user/mypage', {
+      identifier, // JSON 형식으로 body에 전달
+    });
+    return response.data; // 필요에 따라 응답 데이터를 반환
+  } catch (error) {
+    console.error('Error fetching user info:', error);
+    throw error;
+  }
+};
