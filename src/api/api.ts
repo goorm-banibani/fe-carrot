@@ -2,24 +2,29 @@
 import axios from 'axios';
 
 const apiClient = axios.create({
-  baseURL: 'https://04ef-222-232-44-239.ngrok-free.app/articles',
+  baseURL: 'https://50b4-222-232-44-239.ngrok-free.app', // 백엔드에서 제공한 ngrok 주소
   headers: {
-    'Content-Type': `application/json`,
-    'ngrok-skip-browser-warning': 'true',
+    'Content-Type': 'application/json',
+    'ngrok-skip-browser-warning': '1', // ngrok 경고 무시 헤더
   },
-  timeout: 5000,
 });
 
-// 로그인 요청 함수
-export const login = async (id: string, password: string) => {
-    const response = await apiClient.post('/login', { id, password });
-    return response.data;
-  };
-  
-  // 회원가입 요청 함수
-  export const signup = async (name: string, id: string, password: string) => {
-    const response = await apiClient.post('/signup', { name, id, password });
-    return response.data;
-  };
-  
-  export default apiClient;
+// 회원가입 API 호출 함수
+export const signup = async (name: string, identifier: string, password: string) => {
+  try {
+    const response = await apiClient.post('/user/create', {
+      name,
+      identifier,
+      password,
+    });
+    return response.data; // 응답 데이터 반환
+  } catch (error) {
+    throw error; // 에러를 호출부로 전달
+  }
+};
+
+
+export const login = async (identifier: string, password: string) => {
+  const response = await apiClient.post('/user/login', { identifier, password });
+  return response.data;
+};
