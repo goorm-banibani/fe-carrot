@@ -44,7 +44,10 @@ const SalesPage: React.FC = () => {
         {items.map((item) => (
           <div
             key={item.id}
-            className="flex bg-white rounded-lg shadow p-4 relative"
+            className="flex bg-white rounded-lg shadow p-4 relative cursor-pointer"
+            onClick={() =>
+              navigate(`/details/${item.id}`, { state: item }) // 상세 페이지로 이동
+            }
           >
             {/* 이미지 */}
             <div className="w-24 h-24 rounded-lg bg-gray-200 flex items-center justify-center mr-4">
@@ -73,10 +76,24 @@ const SalesPage: React.FC = () => {
 
             {/* 삭제 버튼 */}
             <button
-              onClick={() => handleDelete(item.id)} // 삭제 버튼 클릭 시 호출
+              onClick={(e) => {
+                e.stopPropagation(); //클릭 시 상세 페이지로 가지 않게
+                handleDelete(item.id);
+              }}
               className="absolute top-4 right-4 bg-red-500 text-white text-sm px-3 py-1 rounded shadow hover:bg-red-600"
             >
               삭제
+            </button>
+
+            {/* 수정 버튼 */}
+            <button
+              onClick={(e) => {
+                e.stopPropagation(); //클릭 시 상세 페이지로 가지 않게
+                navigate(`/edit-post/${item.id}`, { state: item }); // 수정 페이지로 이동
+              }}
+              className="absolute top-4 right-20 bg-blue-500 text-white text-sm px-3 py-1 rounded shadow hover:bg-blue-600"
+            >
+              수정
             </button>
           </div>
         ))}
