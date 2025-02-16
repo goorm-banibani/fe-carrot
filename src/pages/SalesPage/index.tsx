@@ -23,17 +23,23 @@ const SalesPage: React.FC = () => {
     <div className="p-6 bg-gray-100 min-h-screen">
       {/* 헤더 */}
       <div className="mb-4">
-        <button
-          onClick={() => navigate(-1)} // 이전 페이지로 이동
-          className="text-orange-500 text-2xl mb-2"
-        >
-          &lt;
-        </button>
-        <h1 className="text-3xl font-bold text-orange-500">나의 판매내역</h1>
+        {/* 제목과 이전 버튼을 같은 줄에 정렬 */}
+        <div className="flex items-center">
+          {/* 이전 페이지 버튼 */}
+          <button
+            onClick={() => navigate(-1)} // 이전 페이지로 이동
+            className="text-orange-500 text-2xl mr-2"
+          >
+            &lt;
+          </button>
+          {/* 제목 */}
+          <h1 className="text-3xl font-bold text-orange-500">나의 판매내역</h1>
+        </div>
+
         {/* 글쓰기 버튼 */}
         <button
           onClick={() => navigate("/write-post")} // 게시물 작성 페이지로 이동
-          className="mt-4 px-4 py-2 bg-orange-500 text-white font-bold rounded shadow hover:bg-orange-600"
+          className="mt-2 px-4 py-2 bg-orange-500 text-white font-bold rounded shadow hover:bg-orange-600"
         >
           글쓰기
         </button>
