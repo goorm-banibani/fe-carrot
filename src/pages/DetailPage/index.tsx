@@ -6,7 +6,7 @@ const DetailPage: React.FC = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const item = location.state;
-  const { name } = useUser(); // 로그인 여부 확인용
+  const { name } = useUser();//로그인 확인
 
   // 관심 목록 상태
   const [isWishListed, setIsWishListed] = useState<boolean>(() => {

@@ -13,11 +13,11 @@ const WishPage: React.FC = () => {
   return (
     <div className="p-6 bg-gray-100 min-h-screen">
       {/* 헤더 */}
-      <div className="mb-4">
+      <div className="mb-4 flex items-center">
         {/* 이전 페이지 버튼 */}
         <button
           onClick={() => navigate(-1)} // 이전 페이지로 이동
-          className="text-orange-500 text-2xl mb-2"
+          className="text-orange-500 text-2xl mr-2"
         >
           &lt;
         </button>

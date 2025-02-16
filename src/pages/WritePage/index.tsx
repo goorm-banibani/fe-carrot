@@ -16,6 +16,14 @@ const WritePage: React.FC = () => {
     }
   };
 
+  // 가격 입력 시 천 단위로 ',' 추가
+  const handlePriceChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const rawValue = e.target.value.replace(/,/g, ""); // 기존 ',' 제거
+    if (!isNaN(Number(rawValue))) {
+      setPrice(Number(rawValue).toLocaleString()); // 천 단위 ',' 추가하여 저장
+    }
+  };
+
   const handlePostSubmit = () => {
     // 게시물 작성 검증
     if (!title || !price || !description || !location) {
@@ -27,7 +35,7 @@ const WritePage: React.FC = () => {
     const newPost = {
       id: Date.now(), // 고유 ID 생성
       title,
-      price: parseInt(price, 10),
+      price: parseInt(price.replace(/,/g, ""), 10), // 천 단위 ',' 제거 후 숫자로 변환
       description,
       location,
       imageUrl: image ? URL.createObjectURL(image) : null, // 이미지 URL
@@ -97,7 +105,7 @@ const WritePage: React.FC = () => {
         <input
           type="text"
           value={price}
-          onChange={(e) => setPrice(e.target.value)}
+          onChange={handlePriceChange}
           placeholder="₩ 가격을 입력해주세요."
           className="w-full border border-gray-300 p-2 rounded"
         />
